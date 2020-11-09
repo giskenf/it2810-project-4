@@ -1,12 +1,19 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import { useDispatch, useSelector } from "react-redux";
+import {RootStore} from '../store/store';
 
 import Colors from '../constants/Colors';
+import { GetPlayers } from '../store/actions/playersAction';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+  const dispatch = useDispatch();
+  const [playerName, setPlayerName] = useState("");
+  const playerState = useSelector((state: RootStore) => state.players);
+  dispatch(GetPlayers(playerName, "", "", 1, 1))
   return (
     <View>
       <View style={styles.getStartedContainer}>
