@@ -16,6 +16,8 @@ export default function TabOneScreen() {
   useEffect(()=>{
     dispatch(GetPlayers(playerName, "", "", 1, 1))
   },[playerName])
+
+  console.log(playerState.player);
   return (
       <View style={styles.container}>
         <Text style={styles.title}>Tab One {typeof playerState.player}</Text>

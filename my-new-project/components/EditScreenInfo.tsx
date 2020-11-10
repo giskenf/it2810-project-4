@@ -10,11 +10,7 @@ import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
 export default function EditScreenInfo({ path }: { path: string }) {
-  /*
-  const dispatch = useDispatch();
-  const [playerName, setPlayerName] = useState("");
-  const playerState = useSelector((state: RootStore) => state.players);
-  dispatch(GetPlayers(playerName, "", "", 1, 1))*/
+  
   return (
     <View>
       <View style={styles.getStartedContainer}>
