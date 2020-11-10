@@ -20,13 +20,12 @@ export default function TabOneScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>Tab One {typeof playerState.player}</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <EditScreenInfo path="/screens/TabOneScreen.js" />
         <Button title="Change player" onPress={() => setPlayerName("virgil")}/>
         <Button
             title="Press me"
             onPress={() => setPlayerName("")}
         />
-          <TextInput
+        <TextInput
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
               onChangeText={text => setPlayerName(text)}
               value={playerName}
