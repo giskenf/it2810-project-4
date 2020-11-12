@@ -1,6 +1,7 @@
 import React  from 'react';
-import Select from 'react-select-native';
+import { StyleSheet, View } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+
 
 interface DropDownProps{
     changeTeam:(a:string)=> void;
@@ -35,21 +36,46 @@ const options = ['All teams', 'Arsenal', 'Aston Villa','Brighton', 'Burnley', 'C
  'West Bromwich', 'West Ham', 'Wolverhampton'];
 
 //Funksjonen changeTeam sendes ned som en prop fra SearchComponent
-export const DropDownComponent: React.FC<DropDownProps> = (props:DropDownProps) => {
+export const DropDownComponent: React.FC = () => {
     const handleChange = (selectedOption: any) => {
         //props.changeTeam(selectedOption.label);
     };
 
     return (
+        <View style={styles.container}> 
         <Picker
+        style={styles.picker}
         selectedValue={'test'}
-        style={{height: 50, width: 100}}
+        mode='dialog'
+        //style={{height: 50, width: 100, zIndex: 10}}
+        itemStyle={styles.itemStyle}
         onValueChange={handleChange}>
         {options.map((item, index) => {
             return (< Picker.Item label={item} value={index} key={index} />);
             })} 
       </Picker>
+      </View>
     )
 };
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 2,
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 50,
+      width: 100,
+      marginTop: 0,
+    },
+    itemStyle: {
+        fontSize: 15,
+        color: 'black',
+        textAlign: 'center',
+        fontWeight: 'normal'
+    },
+    picker: {
+        width: 120,
+    },
+});
 
 

@@ -4,7 +4,6 @@ import { StyleSheet, Modal, TouchableHighlight } from 'react-native';
 //import { NavigationContainer } from '@react-navigation/native';
 import {DropDownComponent} from '../components/DropDownComponent';
 import {FilterComponent} from '../components/FilterComponent';
-import {Picker} from '@react-native-picker/picker';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -22,8 +21,9 @@ export default function TabTwoScreen() {
         visible={modalVisible}>
           <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            {/*<DropDownComponent/>*/}
+            <Text style={styles.modalText}>Choose a filter!</Text>
+            <DropDownComponent/>
+            <FilterComponent/>
             <FilterComponent/>
             <TouchableHighlight
               style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 10,
     height: 1,
     width: '80%',
   },
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 65,
   },
   modalView: {
     margin: 20,
@@ -99,7 +99,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 0,
+    padding: 0,
     textAlign: "center"
   }
 });
