@@ -14,7 +14,6 @@ export default function TabTwoScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
       <Modal 
         animationType="slide"
         transparent={true}
@@ -26,7 +25,7 @@ export default function TabTwoScreen() {
             <FilterComponent/>
             <FilterComponent/>
             <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+              style={{ ...styles.openButton, backgroundColor: '#a973d5' }}
               onPress={() => {
                 setModalVisible(!modalVisible);
               }}
@@ -43,7 +42,7 @@ export default function TabTwoScreen() {
           setModalVisible(true);
         }}
       >
-        <Text style={styles.textStyle}>Show </Text>
+        <Text style={styles.textStyle}>Show filters </Text>
       </TouchableHighlight>
     </View>
   );
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   openButton: {
-    backgroundColor: "#F194FF",
+    backgroundColor: '#a973d5',
     borderRadius: 20,
     padding: 10,
     elevation: 2
@@ -99,6 +98,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   modalText: {
+    color:  '#3D195B',
+    fontWeight: "700", 
     marginBottom: 0,
     padding: 0,
     textAlign: "center"
