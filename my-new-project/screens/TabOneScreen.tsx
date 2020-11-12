@@ -1,38 +1,118 @@
 import React, { useContext, useEffect, useState } from "react";
-import {Alert, Button, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {
+    Alert,
+    Button, FlatList,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    VirtualizedList, Modal
+} from 'react-native';
+
+import {Overlay} from 'react-native-elements'
 import { useDispatch, useSelector } from "react-redux";
 import {RootStore} from '../store/store';
 import { GetPlayers } from '../store/actions/playersAction';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import {playerAbility} from "../store/types";
 
 export default function TabOneScreen() {
-  const dispatch = useDispatch();
-  const [playerName, setPlayerName] = useState("Rashford");
-  const playerState = useSelector((state: RootStore) => state.players);
-  //GetPlayers(playerName, "", "", 1, 1);
+    const dispatch = useDispatch();
+    const [playerName, setPlayerName] = useState("");
+    const playerState = useSelector((state: RootStore) => state.players);
+    useEffect(()=>{
+        dispatch(GetPlayers(playerName, "", "", 1, 1))
+    },[playerName])
 
-  useEffect(()=>{
-    dispatch(GetPlayers(playerName, "", "", 1, 1))
-  },[playerName])
-  return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Tab One {typeof playerState.player}</Text>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <EditScreenInfo path="/screens/TabOneScreen.js" />
-        <Button title="Change player" onPress={() => setPlayerName("virgil")}/>
-        <Button
-            title="Press me"
-            onPress={() => setPlayerName("")}
-        />
-          <TextInput
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-              onChangeText={text => setPlayerName(text)}
-              value={playerName}
-          />
-      </View>
-  );
+    console.log(playerState.player)
+
+    const [people,setPeople] = useState([
+        {name:"ervin",key:"1"},
+        {name:"fffg",key:"2"},
+        {name:"dffd",key:"3"}]);
+
+    console.log(people)
+
+    const [visible, setVisible] = useState(false);
+
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
+
+    return (
+        <View style={styles.container}>
+            <Button title="Change player" onPress={() => setPlayerName("virgil")}/>
+            {people.map(item =>(
+                <View key={item.key}>
+                    <Text style={styles.title}>{item.name}</Text>
+                </View>
+            ))}
+            <View>
+                <Button title="Open Overlay" onPress={toggleOverlay} />
+
+                {/*<Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+                    <Text>Hello from Overlay!</Text>
+                </Overlay>*/}
+                <Overlay ModalComponent={Modal} isVisible={visible} onBackdropPress={toggleOverlay}>
+                    <Text>Hello from Overlay!</Text>
+                </Overlay>
+            </View>
+
+            {playerState.player ?
+                <FlatList
+                    keyExtractor={(item) => item._id }
+                    data={playerState.player}
+                    renderItem={({item}) => (
+                    <View>
+                        <TouchableOpacity onPress={()=>setPlayerName("virgil")}>
+                                <Text>{item.team}</Text>
+                                {/*<Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+                                    <Text>{item.name}</Text>
+                                </Overlay>*/}
+                        </TouchableOpacity>
+                    </View>
+                )}/>
+                :
+                <Text>Nei</Text>
+            }
+        </View>
+    )
+    /*
+
+     const list = () => {
+        return playerState.player?.map(player => {
+            return (
+                <View style={styles.container}>
+                    <Text>{player.name}</Text>
+                    <Text>{player.team}</Text>
+                </View>
+            );
+        });
+    };
+    return(
+        <View style={styles.container}>
+            <Text>{list()}</Text>
+
+            <Button title="Change player" onPress={() => setPlayerName("virgil")}/>
+            <Button title="Press me" onPress={() => Alert.alert('Simple Button pressed')}/>
+            <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                onChangeText={text => setPlayerName(text)}
+                value={playerName}
+            />
+            {
+                playerState.player?.map(player => {
+                    return (
+                        <View style={styles.container}>
+                            <Text>{player.name}</Text>
+                            <Text>{player.team}</Text>
+                        </View>
+                    );})}
+        </View>
+    )*/
+
 }
 
 const styles = StyleSheet.create({
