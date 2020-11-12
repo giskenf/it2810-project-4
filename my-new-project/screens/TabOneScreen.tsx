@@ -23,62 +23,61 @@ export default function TabOneScreen() {
     const dispatch = useDispatch();
     const [playerName, setPlayerName] = useState("");
     const playerState = useSelector((state: RootStore) => state.players);
+
+    //const [people,setPeople] = useState([] as any[]);
+
+    const [people,setPeople] = useState([
+        {assists: 0, clean_sheets: 0, goals_conceded: 0, goals_scored: 1, name: "Evrin Özil", news: "Not included in Arsenal's 25-man"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 0, goals_scored: 2, name: "Grof Özil", news: "Not included in Arsenal's 25-man"},
+        {assists: 10, clean_sheets: 0, goals_conceded: 0, goals_scored: 5, name: "Mesut Özil", news: "Not included in Arsenal"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 5, goals_scored: 0, name: "Fjr Özil", news: "Not"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 6, goals_scored: 0, name: "Mesut Özil Mesut Özil", news: "Not included in Arsenal's 25-manNot included in Arsenal's 25-man"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 7, goals_scored: 0, name: "Mesut Mesut Özil", news: "Not included in Arsenal's 25-manNot included in Arsenal's 25-manNot included in Arsenal's 25-man"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 0, goals_scored: 1, name: "Evrin Özil", news: "Not included in Arsenal's 25-man"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 0, goals_scored: 2, name: "Grof Özil", news: "Not included in Arsenal's 25-man"},
+        {assists: 10, clean_sheets: 0, goals_conceded: 0, goals_scored: 5, name: "Mesut Özil", news: "Not included in Arsenal"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 5, goals_scored: 0, name: "Fjr Özil", news: "Not"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 6, goals_scored: 0, name: "Mesut Özil Mesut Özil", news: "Not included in Arsenal's 25-manNot included in Arsenal's 25-man"},
+        {assists: 10, clean_sheets: 0, goals_conceded: 0, goals_scored: 5, name: "Mesut Özil", news: "Not included in Arsenal"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 5, goals_scored: 0, name: "Fjr Özil", news: "Not"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 6, goals_scored: 0, name: "Mesut Özil Mesut Özil", news: "Not included in Arsenal's 25-manNot included in Arsenal's 25-man"},
+        {assists: 0, clean_sheets: 0, goals_conceded: 7, goals_scored: 0, name: "Mesut Mesut Özil", news: "Not included in Arsenal's 25-manNot included in Arsenal's 25-manNot included in Arsenal's 25-man"}])
+
+
+
+
     useEffect(()=>{
         dispatch(GetPlayers(playerName, "", "", 1, 1))
     },[playerName])
-
-    console.log(playerState.player)
-
-    const [people,setPeople] = useState([
-        {name:"ervin",key:"1"},
-        {name:"fffg",key:"2"},
-        {name:"dffd",key:"3"}]);
-
-    console.log(people)
 
     const [visible, setVisible] = useState(false);
 
     const toggleOverlay = () => {
         setVisible(!visible);
     };
-
+    console.log(playerState.player)
     return (
+
         <View style={styles.container}>
-            <Button title="Change player" onPress={() => setPlayerName("virgil")}/>
-            {people.map(item =>(
-                <View key={item.key}>
-                    <Text style={styles.title}>{item.name}</Text>
+            <FlatList
+                data={people}
+                // keyExtractor={(item)=> item._id}
+                renderItem={({item}) => (
+                <View>
+                    <TouchableOpacity style={styles.item} onPress={toggleOverlay}>
+                        <Text style={styles.title}>{item.name}</Text>
+                        <Overlay style={styles.overlay} isVisible={visible} onBackdropPress={toggleOverlay}>
+                            <Text>{item.name}</Text>
+                        </Overlay>
+                    </TouchableOpacity>
                 </View>
-            ))}
-            <View>
-                <Button title="Open Overlay" onPress={toggleOverlay} />
+                )}>
 
-                {/*<Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-                    <Text>Hello from Overlay!</Text>
-                </Overlay>*/}
-                <Overlay ModalComponent={Modal} isVisible={visible} onBackdropPress={toggleOverlay}>
-                    <Text>Hello from Overlay!</Text>
-                </Overlay>
-            </View>
-
-            {playerState.player ?
-                <FlatList
-                    keyExtractor={(item) => item._id }
-                    data={playerState.player}
-                    renderItem={({item}) => (
-                    <View>
-                        <TouchableOpacity onPress={()=>setPlayerName("virgil")}>
-                                <Text>{item.team}</Text>
-                                {/*<Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-                                    <Text>{item.name}</Text>
-                                </Overlay>*/}
-                        </TouchableOpacity>
-                    </View>
-                )}/>
-                :
-                <Text>Nei</Text>
-            }
+            </FlatList>
         </View>
+
+
+
     )
     /*
 
@@ -118,8 +117,10 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 25,
+    //alignItems: 'center',
+    //justifyContent: 'center',
   },
   title: {
     fontSize: 20,
@@ -130,4 +131,15 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  item:{
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: '#87CEFA',
+    fontSize: 24,
+  },
+  overlay:{
+    height: '60%',
+    width: '50%,',
+    backgroundColor: '#87CEFA'
+  }
 });
