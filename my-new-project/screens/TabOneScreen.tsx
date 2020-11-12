@@ -3,6 +3,7 @@ import {Alert, Button, StyleSheet, TextInput, TouchableOpacity} from 'react-nati
 import { useDispatch, useSelector } from "react-redux";
 import {RootStore} from '../store/store';
 import { GetPlayers } from '../store/actions/playersAction';
+import PlLogo from '../assets/images/premier-league1-svg';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
