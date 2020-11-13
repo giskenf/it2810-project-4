@@ -1,6 +1,6 @@
 import React  from 'react';
 import { StyleSheet, View } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import {Picker} from '@react-native-community/picker';
 
 
 interface DropDownProps{
@@ -51,7 +51,7 @@ export const DropDownComponent: React.FC = () => {
         itemStyle={styles.itemStyle}
         onValueChange={handleChange}>
         {options.map((item, index) => {
-            return (< Picker.Item label={item} value={index} key={index} />);
+            return (< Picker.Item label={item} value={item} key={index} />);
             })} 
       </Picker>
       </View>
