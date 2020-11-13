@@ -52,6 +52,7 @@
     "@types/react-native": "~0.63.2",
     "jest-expo": "~39.0.0",
     "react-native-elements": "^3.0.0-alpha.1",
+    "react-native-pagination": "^1.5.5",
     "typescript": "~3.9.5"
   },
   "private": true

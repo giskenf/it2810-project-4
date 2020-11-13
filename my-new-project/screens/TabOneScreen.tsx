@@ -1,28 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
-    Alert,
-    Button, FlatList,
-    SafeAreaView,
-    ScrollView,
+    FlatList,
     StyleSheet,
     TextInput,
     TouchableOpacity,
-    VirtualizedList, Modal
 } from 'react-native';
-
-import {Overlay} from 'react-native-elements'
+import Pagination,{Icon,Dot} from 'react-native-pagination';
 import { useDispatch, useSelector } from "react-redux";
 import {RootStore} from '../store/store';
 import { GetPlayers } from '../store/actions/playersAction';
 //import PlLogo from '../assets/images/premier-league1-svg';
-
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import {playerAbility} from "../store/types";
 import {Player} from "../components/PlayerInfo";
+import {FilterButton} from "./TabTwoScreen";
 
 export default function TabOneScreen() {
     const dispatch = useDispatch();
+    const [viewable, setViewable] = useState("");
     const [playerName, setPlayerName] = useState("");
     const playerState = useSelector((state: RootStore) => state.players);
     const [value, onChangeText] = React.useState('Useless Placeholder');
@@ -33,11 +27,12 @@ export default function TabOneScreen() {
 
     //console.log(playerState.player)
     console.log(playerName);
-    return (
 
+    return (
         <View style={styles.container}>
             <TextInput
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+              style={styles.search}
+              placeholder="Search for your favorite player!"
               onChangeText={text => setPlayerName(text)}
               value={playerName}
             />
@@ -48,44 +43,18 @@ export default function TabOneScreen() {
                     <Player player={item}/>
                 )}>
             </FlatList>
+
+            {/*<Pagination
+             // Forsøk på Pagination som ikke funker :-) https://www.npmjs.com/package/react-native-pagination#development
+            style={styles.paginationStyle}
+            paginationVisibleItems={playerState.player}//needs to track what the user sees
+            paginationItems={playerState.player}//pass the same list as data
+            paginationItemPadSize={0} //num of items to pad above and below your visable items
+            horizontal={true}
+            />*/}
         </View>
-
-
     )
-    /*
-
-     const list = () => {
-        return playerState.player?.map(player => {
-            return (
-                <View style={styles.container}>
-                    <Text>{player.name}</Text>
-                    <Text>{player.team}</Text>
-                </View>
-            );
-        });
-    };
-    return(
-        <View style={styles.container}>
-            <Text>{list()}</Text>
-
-            <Button title="Change player" onPress={() => setPlayerName("virgil")}/>
-            <Button title="Press me" onPress={() => Alert.alert('Simple Button pressed')}/>
-            <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                onChangeText={text => setPlayerName(text)}
-                value={playerName}
-            />
-            {
-                playerState.player?.map(player => {
-                    return (
-                        <View style={styles.container}>
-                            <Text>{player.name}</Text>
-                            <Text>{player.team}</Text>
-                        </View>
-                    );})}
-        </View>
-    )*/
-
-t }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -114,5 +83,24 @@ const styles = StyleSheet.create({
     height: '60%',
     width: '50%,',
     backgroundColor: '#87CEFA'
+  }, 
+  search:{
+    height: 40,
+    borderBottomColor: '#F194FF',
+    borderColor: 'white', 
+    borderWidth: 1,
+      
+  }, 
+  paginationStyle:{
+    alignItems:"center" , 
+    justifyContent: 'space-between', 
+    position:"absolute", 
+    top:0, 
+    margin:0, 
+    bottom:0, 
+    right:0, 
+    bottom:0, 
+    padding:0, 
+    flex:1, 
   }
 });

@@ -1,16 +1,11 @@
 import  React, {useState} from 'react';
 import { StyleSheet, Modal, TouchableHighlight } from 'react-native';
-//import { createDrawerNavigator } from '@react-navigation/drawer';
-//import { NavigationContainer } from '@react-navigation/native';
 import {DropDownComponent} from '../components/DropDownComponent';
 import {FilterComponent} from '../components/FilterComponent';
-
-
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
-export default function TabTwoScreen() {
-  //const Drawer = createDrawerNavigator();
+
+export const FilterButton: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -26,7 +21,11 @@ export default function TabTwoScreen() {
             <FilterComponent/>
             <FilterComponent/>
             <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: '#a973d5' }}
+              style={{
+                 ...styles.openButton,
+                  backgroundColor: '#a973d5',
+                  marginLeft: 0,
+                 }}
               onPress={() => {
                 setModalVisible(!modalVisible);
               }}
@@ -36,14 +35,13 @@ export default function TabTwoScreen() {
           </View>
         </View>
       </Modal>
-      {/*<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />*/}
        <TouchableHighlight
         style={styles.openButton}
         onPress={() => {
           setModalVisible(true);
         }}
       >
-        <Text style={styles.textStyle}>Show filters </Text>
+        <Text style={styles.textStyle}>Filter </Text>
       </TouchableHighlight>
     </View>
   );
@@ -54,6 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#3D195B',
   },
   title: {
     fontSize: 20,
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 65,
+    marginTop: 80,
   },
   modalView: {
     margin: 20,
@@ -89,13 +88,14 @@ const styles = StyleSheet.create({
   },
   openButton: {
     backgroundColor: '#a973d5',
-    borderRadius: 20,
-    padding: 10,
+    borderRadius: 25,
+    padding: 5,
+    marginLeft: 20,
     elevation: 2
   },
   textStyle: {
     color: "white",
-    fontWeight: "bold",
+    fontWeight: "normal",
     textAlign: "center"
   },
   modalText: {
