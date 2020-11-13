@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import {
     Alert,
     Button, FlatList,
@@ -107,8 +106,7 @@ export default function TabOneScreen() {
         </View>
     )*/
 
->>>>>>> feat/setup
-}
+t }
 
 const styles = StyleSheet.create({
   container: {
