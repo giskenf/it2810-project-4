@@ -13,7 +13,7 @@ export type playerAbility = {
   yellow_cards: number;
   red_cards: number;
   team: string;
-  votes: number;
+  votes?: number;
 };
 
 export interface GetPlayers {
