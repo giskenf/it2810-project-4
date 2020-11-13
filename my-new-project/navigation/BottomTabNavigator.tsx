@@ -59,7 +59,6 @@ function TabOneNavigator() {
             backgroundColor: '#3D195B',
           },
           headerTitleStyle: {
-            fontFamily: 'sans-serif',
             fontWeight: 'normal',
             color: 'white', 
           },
@@ -84,7 +83,6 @@ function TabTwoNavigator() {
             backgroundColor: '#3D195B',
           },
           headerTitleStyle: {
-            fontFamily: 'sans-serif',
             fontWeight: 'normal',
             color: 'white',
           }, }}
