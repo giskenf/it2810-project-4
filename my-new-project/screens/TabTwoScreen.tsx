@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
     fontWeight: "700", 
     marginBottom: 0,
     padding: 0,
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 20,
   }
 });
 
