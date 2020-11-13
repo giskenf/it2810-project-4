@@ -52,7 +52,17 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ 
+          headerTitle: 'Premier League Search!', 
+          headerTitleAlign: 'center', 
+          headerStyle:  {
+            backgroundColor: '#3D195B',
+          },
+          headerTitleStyle: {
+            fontWeight: 'normal',
+            color: 'white', 
+          },
+         }}
       />
     </TabOneStack.Navigator>
   );
@@ -66,7 +76,16 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ 
+          headerTitle: 'Premier League Search!', 
+          headerTitleAlign: 'center',
+          headerStyle:  {
+            backgroundColor: '#3D195B',
+          },
+          headerTitleStyle: {
+            fontWeight: 'normal',
+            color: 'white',
+          }, }}
       />
     </TabTwoStack.Navigator>
   );

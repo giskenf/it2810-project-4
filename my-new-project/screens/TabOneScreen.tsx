@@ -1,4 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+<<<<<<< HEAD
+import {Alert, Button, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+
+=======
 import {
     Alert,
     Button, FlatList,
@@ -11,16 +15,37 @@ import {
 } from 'react-native';
 
 import {Overlay} from 'react-native-elements'
+>>>>>>> feat/setup
 import { useDispatch, useSelector } from "react-redux";
 import {RootStore} from '../store/store';
 import { GetPlayers } from '../store/actions/playersAction';
+//import PlLogo from '../assets/images/premier-league1-svg';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import {playerAbility} from "../store/types";
 import {Player} from "../components/PlayerInfo";
 
+
 export default function TabOneScreen() {
+<<<<<<< HEAD
+  const dispatch = useDispatch();
+  const [playerName, setPlayerName] = useState("Rashford");
+  const playerState = useSelector((state: RootStore) => state.players);
+  //GetPlayers(playerName, "", "", 1, 1);
+
+  useEffect(()=>{
+    dispatch(GetPlayers(playerName, "", "", 1, 1))
+  },[playerName])
+
+  console.log(playerState.player);
+  return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Tab One </Text>
+        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      </View>
+  );
+=======
     const dispatch = useDispatch();
     const [playerName, setPlayerName] = useState("");
     const playerState = useSelector((state: RootStore) => state.players);
@@ -104,6 +129,7 @@ export default function TabOneScreen() {
         </View>
     )*/
 
+>>>>>>> feat/setup
 }
 
 const styles = StyleSheet.create({
