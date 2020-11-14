@@ -14,6 +14,8 @@ const PlayerSchema = mongoose.Schema({
   red_cards: Number,
   name: String,
   team: String,
+  src: String,
+  team_url: String,
 });
 
 module.exports = mongoose.model("players", PlayerSchema);
