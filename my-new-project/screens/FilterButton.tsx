@@ -3,14 +3,14 @@ import { StyleSheet, Modal, TouchableHighlight } from 'react-native';
 import {DropDownComponent} from '../components/DropDownComponent';
 import {FilterComponent} from '../components/FilterComponent';
 import { Text, View } from '../components/Themed';
-import { GlobalContext } from "../components/GlobalProvider";
+//import { GlobalContext } from "../components/GlobalProvider";
 
 
 export const FilterButton: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [team, setTeam] = useState("");
 
-  const { pageProvider, numberOfPageProvider,isDisabledProvider } = useContext(GlobalContext);
+  //const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider} = useContext(GlobalContext);
 
   return (
     <View style={styles.container}>

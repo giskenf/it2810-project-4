@@ -1,7 +1,7 @@
 import React, {useContext}  from 'react';
 import { StyleSheet, View } from 'react-native';
 import {Picker} from '@react-native-community/picker';
-import { GlobalContext } from "../components/GlobalProvider";
+//import { GlobalContext } from "../components/GlobalProvider";
 
 
 interface DropDownProps{
@@ -32,9 +32,9 @@ interface DropDownProps{
     { value: 'Wolves', label: 'Wolverhampton' },
 ];*/
 
-const options = ['All teams', 'Arsenal', 'Aston Villa','Brighton', 'Burnley', 'Chelsea', 'Crystal Palace', 'Everton',
+/*const options = ['All teams', 'Arsenal', 'Aston Villa','Brighton', 'Burnley', 'Chelsea', 'Crystal Palace', 'Everton',
  'Fulham', 'Leeds', 'Leicester', 'Liverpool', 'Manchester City', 'Manchester United', 'Newcastle', 'Sheffield', 'Southampton', 
- 'West Bromwich', 'West Ham', 'Wolverhampton'];
+ 'West Bromwich', 'West Ham', 'Wolverhampton'];*/
 
 //Funksjonen changeTeam sendes ned som en prop fra SearchComponent
 export const DropDownComponent: React.FC<DropDownProps> = (props: DropDownProps) => {
@@ -43,8 +43,8 @@ export const DropDownComponent: React.FC<DropDownProps> = (props: DropDownProps)
     };*/
     /*function handleChange(selected: any) {
         teamProvider.setTeam(selected);
-    }
-    const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider } = useContext(GlobalContext);*/
+    }*/
+    //const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider } = useContext(GlobalContext);
 
     return (
         <View style={styles.container}> 
@@ -53,9 +53,29 @@ export const DropDownComponent: React.FC<DropDownProps> = (props: DropDownProps)
             selectedValue={'test'}
             mode='dialog'
             itemStyle={styles.itemStyle}>
-            {options.map((item, index) => {
+            {/*{options.map((item, index) => {
                 return (< Picker.Item label={item} value={item} key={index} />);
-                })} 
+                })}*/}
+            <Picker.Item label='All teams' value=""/>
+            <Picker.Item label='Arsenal' value="Arsenal"/>
+            <Picker.Item value= 'Aston Villa' label='Aston Villa'/>
+            <Picker.Item value='Brighton' label='Brighton'/>
+            <Picker.Item value='Burnley' label='Burnley'/>
+            <Picker.Item value='Chelsea' label='Chelsea' />
+            <Picker.Item value='Crystal Palace' label='Crystal Palace'/>
+            <Picker.Item value='Everton' label='Everton' />
+            <Picker.Item value='Fulham' label='Fulham' />
+            <Picker.Item value='Leeds' label='Leeds United'/>
+            <Picker.Item value='Leicester' label='Leicester'/>
+            <Picker.Item value= 'Liverpool' label='Liverpool' />
+            <Picker.Item value='Man City' label='Manchester City'/>
+            <Picker.Item value='Man Utd' label= 'Manchester United' />
+            <Picker.Item value= 'Newcastle' label= 'Newcastle' />
+            <Picker.Item value='Sheffield' label='Sheffield United'/>
+            <Picker.Item value='Southampton' label='Southampton' />
+            <Picker.Item value='Tottenham' label= 'Totteham'  />
+            <Picker.Item value= 'West Brom' label='West Bromwich'/>
+            <Picker.Item value='West Ham' label='West Ham' />
           </Picker>
       </View>
     )

@@ -22,8 +22,8 @@ export default function TabOneScreen() {
     const [playerName, setPlayerName] = useState("");
     const playerState = useSelector((state: RootStore) => state.players);
     const [value, onChangeText] = React.useState('Useless Placeholder');
-    const [team, setTeam] = useState("");
-    const [sort, setSort] = useState(""); 
+    const [team, setTeam] = useState("Arsenal");
+    const [sort, setSort] = useState("name"); 
     const [order, setOrder] = useState(1); 
     const [page, setPage] = useState(1);
 
