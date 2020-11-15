@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
     Alert, //Modal,
     Modal,
+    Image,
     StyleSheet,
     Text,
     TouchableHighlight, TouchableOpacity,
@@ -34,6 +35,12 @@ export const Player = (props:playerProps) => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.modalTitle}>{props.player.name}</Text>
+                        <Image
+                            style={{ width: 100, height: 130, resizeMode: 'stretch' }}
+                            source={{ uri: 'https://tmssl.akamaized.net/images/portrait/header/105470-1595945929.jpg' }}
+                        />
+                        
+
 
                         <Text style={styles.modalText}>{props.player.team}</Text>
                         <Text style={styles.modalText}>{props.player.goals_scored}</Text>
@@ -130,6 +137,10 @@ const styles = StyleSheet.create({
     modalTitle:{
         textAlign: "center",
         fontSize: 25
-    }
+    },
+    tinyLogo: {
+        width: 50,
+        height: 50,
+    },
 
 });
