@@ -6,7 +6,7 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import {FilterButton} from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -25,13 +25,13 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
-      <BottomTab.Screen
+      {/*<BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
-      />
+      />*/}
     </BottomTab.Navigator>
   );
 }
@@ -52,13 +52,26 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ 
+          headerLeft: () => (
+            <FilterButton/>),
+          headerTitle: 'Premier League Search!', 
+          headerTitleAlign: 'center', 
+          headerStyle:  {
+            backgroundColor: '#3D195B',
+            height: 80,
+          },
+          headerTitleStyle: {
+            fontWeight: 'normal',
+            color: 'white', 
+          },
+         }}
       />
     </TabOneStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+/*const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function TabTwoNavigator() {
   return (
@@ -66,8 +79,17 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ 
+          headerTitle: 'Premier League Search!', 
+          headerTitleAlign: 'center',
+          headerStyle:  {
+            backgroundColor: '#3D195B',
+          },
+          headerTitleStyle: {
+            fontWeight: 'normal',
+            color: 'white',
+          }, }}
       />
     </TabTwoStack.Navigator>
   );
-}
+}*/
