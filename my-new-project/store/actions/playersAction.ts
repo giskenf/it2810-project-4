@@ -20,7 +20,7 @@ export const GetPlayers = (
                 type: PLAYERS_LOADING
             })
             const res = await axios.get
-            (`http://10.22.35.30:8000/players/?name=${name}&team=${team}&sortingVariable=${sort}&sortingOrder=${order}&page=${page}`);
+            (`http://10.22.223.18:8000/players/?name=${name}&team=${team}&sortingVariable=${sort}&sortingOrder=${order}&page=${page}`);
             dispatch({
                 type: GET_PLAYERS,
                 payload: res.data.players,

@@ -1,6 +1,7 @@
-import React  from 'react';
+import React, {useContext}  from 'react';
 import { StyleSheet, View } from 'react-native';
 import {Picker} from '@react-native-community/picker';
+import { GlobalContext } from "../components/GlobalProvider";
 
 
 interface DropDownProps{
@@ -36,24 +37,26 @@ const options = ['All teams', 'Arsenal', 'Aston Villa','Brighton', 'Burnley', 'C
  'West Bromwich', 'West Ham', 'Wolverhampton'];
 
 //Funksjonen changeTeam sendes ned som en prop fra SearchComponent
-export const DropDownComponent: React.FC = () => {
-    const handleChange = (selectedOption: any) => {
-        //props.changeTeam(selectedOption.label);
-    };
+export const DropDownComponent: React.FC<DropDownProps> = (props: DropDownProps) => {
+    /*const handleChange = (selectedOption: any) => {
+        props.changeTeam(selectedOption.label);
+    };*/
+    /*function handleChange(selected: any) {
+        teamProvider.setTeam(selected);
+    }
+    const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider } = useContext(GlobalContext);*/
 
     return (
         <View style={styles.container}> 
-        <Picker
-        style={styles.picker}
-        selectedValue={'test'}
-        mode='dialog'
-        //style={{height: 50, width: 100, zIndex: 10}}
-        itemStyle={styles.itemStyle}
-        onValueChange={handleChange}>
-        {options.map((item, index) => {
-            return (< Picker.Item label={item} value={item} key={index} />);
-            })} 
-      </Picker>
+          <Picker
+            style={styles.picker}
+            selectedValue={'test'}
+            mode='dialog'
+            itemStyle={styles.itemStyle}>
+            {options.map((item, index) => {
+                return (< Picker.Item label={item} value={item} key={index} />);
+                })} 
+          </Picker>
       </View>
     )
 };

@@ -12,7 +12,9 @@ import { GetPlayers } from '../store/actions/playersAction';
 //import PlLogo from '../assets/images/premier-league1-svg';
 import { Text, View } from '../components/Themed';
 import {Player} from "../components/PlayerInfo";
-import {FilterButton} from "./TabTwoScreen";
+import {FilterButton} from "./FilterButton";
+import { GlobalContext } from "../components/GlobalProvider";
+
 
 export default function TabOneScreen() {
     const dispatch = useDispatch();
@@ -20,13 +22,16 @@ export default function TabOneScreen() {
     const [playerName, setPlayerName] = useState("");
     const playerState = useSelector((state: RootStore) => state.players);
     const [value, onChangeText] = React.useState('Useless Placeholder');
+    const [team, setTeam] = useState("");
+    const [sort, setSort] = useState(""); 
+    const [order, setOrder] = useState(1); 
+    const [page, setPage] = useState(1);
+
+    const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider } = useContext(GlobalContext);
 
     useEffect(()=>{
-        dispatch(GetPlayers(playerName, "", "", 1, 1))
+        dispatch(GetPlayers(playerName, team, sort, order, page))
     },[playerName])
-
-    //console.log(playerState.player)
-    console.log(playerName);
 
     return (
         <View style={styles.container}>
@@ -61,8 +66,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 40,
     paddingHorizontal: 25,
-    //alignItems: 'center',
-    //justifyContent: 'center',
   },
   title: {
     fontSize: 20,

@@ -1,12 +1,16 @@
-import  React, {useState} from 'react';
+import  React, {useState, useContext} from 'react';
 import { StyleSheet, Modal, TouchableHighlight } from 'react-native';
 import {DropDownComponent} from '../components/DropDownComponent';
 import {FilterComponent} from '../components/FilterComponent';
 import { Text, View } from '../components/Themed';
+import { GlobalContext } from "../components/GlobalProvider";
 
 
 export const FilterButton: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [team, setTeam] = useState("");
+
+  const { pageProvider, numberOfPageProvider,isDisabledProvider } = useContext(GlobalContext);
 
   return (
     <View style={styles.container}>
@@ -17,8 +21,10 @@ export const FilterButton: React.FC = () => {
           <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Choose a filter!</Text>
-            <DropDownComponent/>
+            <DropDownComponent changeTeam={setTeam}/>
+            <Text style={styles.switchText}>Sort by name</Text>
             <FilterComponent/>
+            <Text style={styles.switchText}>Sort by goals scored</Text>
             <FilterComponent/>
             <TouchableHighlight
               style={{
@@ -105,6 +111,14 @@ const styles = StyleSheet.create({
     padding: 0,
     textAlign: "center",
     fontSize: 20,
-  }
+  },
+  switchText:{
+    color:  '#3D195B',
+    fontWeight: "normal", 
+    marginBottom: 0,
+    padding: 0,
+    textAlign: "center",
+    fontSize: 10,
+  },
 });
 

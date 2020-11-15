@@ -37,11 +37,12 @@ export const Player = (props:playerProps) => {
                         <Text style={styles.modalTitle}>{props.player.name}</Text>
                         <Image
                             style={{ width: 100, height: 130, resizeMode: 'stretch' }}
-                            source={{ uri: 'https://tmssl.akamaized.net/images/portrait/header/105470-1595945929.jpg' }}
+                            source={{uri: props.player.src}}
                         />
-                        
-
-
+                        <Image
+                            style={{ width: 50, height: 65, resizeMode: 'stretch' }}
+                            source={{uri: props.player.team_url}}
+                        />
                         <Text style={styles.modalText}>{props.player.team}</Text>
                         <Text style={styles.modalText}>{props.player.goals_scored}</Text>
                         <Text style={styles.modalText}>{props.player.clean_sheets}</Text>

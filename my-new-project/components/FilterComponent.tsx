@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Switch, StyleSheet } from "react-native";
 
-
-export const FilterComponent = () => {
+export const FilterComponent: React.FC = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
