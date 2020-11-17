@@ -7,12 +7,13 @@ import {
 import { Dispatch } from "redux";
 import axios from "axios";
 
+
 export const GetPlayers = (
   name: string,
   team: string,
   sort: string,
   order: number,
-  page: number
+  page: number,
 
   ) => async (dispatch:Dispatch<PlayerDispatchTypes>) => {
         try{
@@ -20,7 +21,7 @@ export const GetPlayers = (
                 type: PLAYERS_LOADING
             })
             const res = await axios.get
-            (`http://localhost:8000/players/?name=${name}&team=${team}&sortingVariable=${sort}&sortingOrder=${order}&page=${page}`);
+            (`http://10.22.223.18:8000/players/?name=${name}&team=${team}&sortingVariable=${sort}&sortingOrder=${order}&page=${page}`);
             dispatch({
                 type: GET_PLAYERS,
                 payload: res.data.players,

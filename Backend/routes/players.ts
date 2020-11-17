@@ -6,8 +6,8 @@ router.get("/", async (req, res) => {
   try {
     const name = req.query.name;
     const teamIn = req.query.team;
-    const limit = 15;
-    const skip = (req.query.page - 1) * limit; //Ganger sidetall med limit for å hente neste "batch"" spillere.
+    //const limit = ;
+    //const skip = (req.query.page - 1) * limit; //Ganger sidetall med limit for å hente neste "batch"" spillere.
     let sort = {};
     const filter = {
       //bruker regex for å søke på match i strenger. Dersom en av verdiene ikke er satt, vises alle innenfor denne verdien.
@@ -31,8 +31,8 @@ router.get("/", async (req, res) => {
 
     const players = await Players.find(filter)
       .sort(sort)
-      .limit(15) //statisk grense satt til 15 per side
-      .skip(skip);
+      //.limit(40) //statisk grense satt til 15 per side
+      //.skip(skip);
     const res1 = {
       players: players,
       count: count,

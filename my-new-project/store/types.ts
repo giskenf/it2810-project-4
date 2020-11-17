@@ -13,7 +13,9 @@ export type playerAbility = {
   yellow_cards: number;
   red_cards: number;
   team: string;
-  votes: number;
+  votes?: number;
+  src: string;
+  team_url: string;
 };
 
 export interface GetPlayers {
