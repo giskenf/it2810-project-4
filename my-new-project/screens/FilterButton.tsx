@@ -1,4 +1,4 @@
-import  React, {useState, useContext} from 'react';
+import  React, {useState, useEffect} from 'react';
 import { StyleSheet, Modal, TouchableHighlight } from 'react-native';
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 import {DropDownComponent} from '../components/DropDownComponent';
@@ -18,8 +18,7 @@ interface filterProps{
 
 export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-
-  //const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider} = useContext(GlobalContext);
+  const [boxIsChecked, setBoxIsChecked] = useState(false); 
 
   return (
     <View style={styles.container}>
@@ -39,11 +38,12 @@ export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Choose a filter!</Text>
             <DropDownComponent setTeam={props.setTeam} team={props.team}/>
-            <Text style={styles.switchText}>Sort by name</Text>
+            <Text style={styles.switchText}>Sort by name:</Text>
             <FilterComponent setSort={props.setSort}/>
-            <Text style={styles.switchText}>Sort by goals scored</Text>
+            <Text style={styles.switchText}>Sort by goals scored:</Text>
             <GoalsSort setSort={props.setSort}/>
-            <CheckBoxComponent setOrder={props.setOrder}/>
+            <Text style={styles.switchText}> Set ascending order:</Text>
+            <CheckBoxComponent setOrder={props.setOrder} setBoxIsChecked={setBoxIsChecked} boxIsChecked={boxIsChecked}/>
             <TouchableHighlight
               style={{
                  ...styles.openButton,
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     padding: 20,
-    width: 300,
-    height: 500,
+    width: 350,
+    height: 580,
     alignItems: "flex-start",
     shadowColor: "#000",
     shadowOffset: {
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   switchText:{
     color:  '#3D195B',
     fontWeight: "normal", 
-    marginBottom: 0,
+    margin: 0,
     padding: 0,
     textAlign: "center",
     fontSize: 10,

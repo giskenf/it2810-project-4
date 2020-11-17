@@ -5,6 +5,8 @@ import CheckBox from 'react-native-check-box';
 
 interface filterProps{
     setOrder:(a: number)=> void; 
+    setBoxIsChecked:(a: boolean)=> void; 
+    boxIsChecked: boolean;
   }
   
   
@@ -16,17 +18,21 @@ interface filterProps{
       toggleSwitch()
       if(!isEnabled){
         props.setOrder(1);
+        props.setBoxIsChecked(false);
       }
       else{
         props.setOrder(-1);
+        props.setBoxIsChecked(true);
       }
     }
+
+    console.log(props.boxIsChecked);
     return (
       <View style={styles.container}>
         <CheckBox
             style={{flex: 1, padding: 10}}
             onClick={checkEnable} 
-            isChecked={isEnabled}
+            isChecked={props.boxIsChecked}
             leftText={"CheckBox"}
         />
       </View>

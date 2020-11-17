@@ -29,7 +29,7 @@ export default function TabOneScreen() {
         dispatch(GetPlayers(playerName, team, sort, order, page))
     },[playerName, sort, team, order ])
 
-    console.log(order);
+    //console.log(order);
 
     return (
         <View style={styles.container}>
