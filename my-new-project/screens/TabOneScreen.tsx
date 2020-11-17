@@ -51,32 +51,6 @@ export default function TabOneScreen() {
                 )}>
             </FlatList>
 
-            {/* <View style={styles.bottomTab}>
-              
-            { <Pagination className="pagination"
-                    style={styles.bottomTab}
-                    count={numberOfPages}
-                    color={"primary"}
-                    page={selectedPage}
-                    // onChange={handleChange}
-                    disabled={isDisabled}
-                    size={"large"}
-                />
-              
-              
-            </View> } */}
-
-            <Pagination
-             // Forsøk på Pagination som ikke funker :-) https://www.npmjs.com/package/react-native-pagination#development
-                style={styles.paginationStyle}
-                color={"primary"}
-                paginationItems={playerState.player}
-                page={selectedPage}
-                onPress={(value: number)=>setSelectedPage(value)}
-                disabled={isDisabled}
-                size={"large"} 
-                horizontal={true}
-            />
         </View>
     )
 }
@@ -102,17 +76,6 @@ const styles = StyleSheet.create({
     borderColor: 'white', 
     borderWidth: 1,
   }, 
-  paginationStyle:{
-    alignItems:"center" , 
-    justifyContent: 'space-between', 
-    position:"absolute", 
-    top:0, 
-    margin:0, 
-    bottom:0, 
-    right:0, 
-    padding:0, 
-    flex:1, 
-  },
   filterButton:{
       paddingBottom: 20,
   },

@@ -1,23 +1,13 @@
-import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
 //import Colors from '../constants/Colors';
 //import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
-import {FilterButton} from '../screens/FilterButton';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
-
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
-const Stack = createStackNavigator<TabOneParamList>();
+import { TabOneParamList } from '../types';
 
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -47,26 +37,3 @@ export default function TabOneNavigator() {
     </TabOneStack.Navigator>
   );
 }
-
-/*const TabTwoStack = createStackNavigator<TabTwoParamList>();
-
-function TabTwoNavigator() {
-  return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ 
-          headerTitle: 'Premier League Search!', 
-          headerTitleAlign: 'center',
-          headerStyle:  {
-            backgroundColor: '#3D195B',
-          },
-          headerTitleStyle: {
-            fontWeight: 'normal',
-            color: 'white',
-          }, }}
-      />
-    </TabTwoStack.Navigator>
-  );
-}*/
