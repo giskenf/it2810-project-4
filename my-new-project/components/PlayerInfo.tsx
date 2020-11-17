@@ -16,7 +16,6 @@ interface playerProps{
     player: playerAbility
 }
 
-
 export const Player = (props:playerProps) => {
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -34,22 +33,22 @@ export const Player = (props:playerProps) => {
 
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalTeamText}>{props.player.team}</Text>
+                        <Text style={styles.modalTitle}>{props.player.name}</Text>
                         <Image
                             style={{ width: 100, height: 130, resizeMode: 'stretch' }}
                             source={{uri: props.player.src}}
                         />
-                        <Text style={styles.modalTitle}>{props.player.name}</Text>
-                        <Text style={styles.modalText}>Goal scored: {props.player.goals_scored}</Text>
-                        <Text style={styles.modalText}>Clean sheets: {props.player.clean_sheets}</Text>
-                        <Text style={styles.modalText}>Yellow cards: {props.player.yellow_cards}</Text>
-                        <Text style={styles.modalText}>Red cards: {props.player.red_cards}</Text>
-                        <Text style={styles.modalText}>Own goals: {props.player.own_goals}</Text>
-                        <Text style={styles.modalText}>News: {props.player.news}</Text>
                         <Image
-                            style={{ width: 50, height: 70, resizeMode: 'stretch' }}
+                            style={{ width: 50, height: 65, resizeMode: 'stretch' }}
                             source={{uri: props.player.team_url}}
                         />
+                        <Text style={styles.modalText}>{props.player.team}</Text>
+                        <Text style={styles.modalText}>{props.player.goals_scored}</Text>
+                        <Text style={styles.modalText}>{props.player.clean_sheets}</Text>
+                        <Text style={styles.modalText}>{props.player.yellow_cards}</Text>
+                        <Text style={styles.modalText}>{props.player.red_cards}</Text>
+                        <Text style={styles.modalText}>{props.player.own_goals}</Text>
+                        <Text style={styles.modalText}>{props.player.news}</Text>
                         <MaterialIcons
                             style={styles.closeButton}
                             name={'close'}
@@ -59,7 +58,7 @@ export const Player = (props:playerProps) => {
                     </View>
                 </View>
             </Modal>
-
+            <View style={styles.buttonContainter}>
             <TouchableHighlight
                 style={styles.openButton}
                 onPress={() => {
@@ -67,7 +66,15 @@ export const Player = (props:playerProps) => {
                 }}
             >
                 <Text style={styles.textStyle}>{props.player.name}</Text>
+
             </TouchableHighlight>
+
+            <Image
+                style={{ width: 30, height: 35, resizeMode: 'stretch' ,right:0}}
+                source={{uri: props.player.team_url}}
+            />
+
+            </View>
         </View>
     );
 };
@@ -135,6 +142,12 @@ const styles = StyleSheet.create({
     tinyLogo: {
         width: 50,
         height: 50,
+    },
+    buttonContainter:{
+        flex:1,
+        flexDirection: 'row',
+        alignItems: "center"
+
     },
 
 });
