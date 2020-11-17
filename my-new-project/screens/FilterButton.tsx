@@ -11,6 +11,7 @@ interface filterProps{
   setTeam:(a: string)=> void;
   team: string; 
   setOrder:(a: number)=> void;
+  setSelectedPage:(a: number)=> void;
 }
 
 export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
@@ -18,6 +19,8 @@ export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
   const [boxIsChecked, setBoxIsChecked] = useState(false); 
   const [sortByName, setSortByName] = useState(false);
   const [sortByGoals, setSortByGoals] = useState (false)
+
+
 
   return (
     <View style={styles.container}>
@@ -52,6 +55,7 @@ export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
                  }}
               onPress={() => {
                 setModalVisible(!modalVisible);
+                props.setSelectedPage(1);
               }}
             >
               <Text style={styles.textStyle}>Apply</Text>

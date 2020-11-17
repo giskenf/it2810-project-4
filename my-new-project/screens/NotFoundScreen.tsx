@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack';
+/*import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
-});
+});*/

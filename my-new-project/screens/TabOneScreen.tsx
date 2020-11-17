@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
+  Button,
     FlatList,
     StyleSheet,
     TextInput,
@@ -22,17 +23,19 @@ export default function TabOneScreen() {
     const [team, setTeam] = useState("");
     const [sort, setSort] = useState(""); 
     const [order, setOrder] = useState(1); 
-    const [page, setPage] = useState(1);
+    const [selectedPage, setSelectedPage] = useState(1);
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [numberOfPages, setNumberOfPages] = useState(10);
 
     useEffect(()=>{
-        dispatch(GetPlayers(playerName, team, sort, order, page))
+        dispatch(GetPlayers(playerName, team, sort, order, selectedPage))
     },[playerName, sort, team, order ])
 
     //console.log(order);
 
     return (
         <View style={styles.container}>
-           <FilterButton  setSort={setSort} setTeam={setTeam} team={team} setOrder={setOrder}>Filter</FilterButton>
+           <FilterButton setSort={setSort} setTeam={setTeam} team={team} setOrder={setOrder} setSelectedPage={setSelectedPage} />
             <TextInput
               style={styles.search}
               placeholder="Search for your favorite player!"
@@ -48,19 +51,41 @@ export default function TabOneScreen() {
                 )}>
             </FlatList>
 
-            {/*<Pagination
+            {/* <View style={styles.bottomTab}>
+              
+            { <Pagination className="pagination"
+                    style={styles.bottomTab}
+                    count={numberOfPages}
+                    color={"primary"}
+                    page={selectedPage}
+                    // onChange={handleChange}
+                    disabled={isDisabled}
+                    size={"large"}
+                />
+              
+              
+            </View> } */}
+
+            <Pagination
              // Forsøk på Pagination som ikke funker :-) https://www.npmjs.com/package/react-native-pagination#development
-            style={styles.paginationStyle}
-            paginationVisibleItems={playerState.player}//needs to track what the user sees
-            paginationItems={playerState.player}//pass the same list as data
-            paginationItemPadSize={0} //num of items to pad above and below your visable items
-            horizontal={true}
-            />*/}
+                style={styles.paginationStyle}
+                color={"primary"}
+                paginationItems={playerState.player}
+                page={selectedPage}
+                onPress={(value: number)=>setSelectedPage(value)}
+                disabled={isDisabled}
+                size={"large"} 
+                horizontal={true}
+            />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+  // bottomTab: {
+  //   flex: 1,
+  //   padding: 25
+  // },
   container: {
     flex: 1,
     paddingTop: 0,
