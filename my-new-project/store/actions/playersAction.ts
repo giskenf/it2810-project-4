@@ -7,7 +7,6 @@ import {
 import { Dispatch } from "redux";
 import axios from "axios";
 
-const IPAdresse ='10.22.223.18', //FYLL UT IP ADRESSEN DIN HER
 
 export const GetPlayers = (
   name: string,
