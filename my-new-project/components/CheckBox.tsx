@@ -25,7 +25,6 @@ interface filterProps{
       }
     }
 
-    console.log(props.boxIsChecked);
     return (
       <View style={styles.container}>
         <CheckBox
