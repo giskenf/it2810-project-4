@@ -6,7 +6,6 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import Sstore from './store/store';
-import {GlobalProvider} from "./components/GlobalProvider";
 
 const { Provider } = require('react-redux');
 export default function App() {
