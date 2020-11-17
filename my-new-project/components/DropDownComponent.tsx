@@ -1,11 +1,11 @@
-import React, {useContext}  from 'react';
+import React, {useEffect, useState}  from 'react';
 import { StyleSheet, View } from 'react-native';
 import {Picker} from '@react-native-community/picker';
 //import { GlobalContext } from "../components/GlobalProvider";
 
-
-interface DropDownProps{
-    changeTeam:(a:string)=> void;
+interface filterProps{
+    setTeam:(a:string)=> void;
+    team: string;
 }
 
 /*const options = [
@@ -32,12 +32,9 @@ interface DropDownProps{
     { value: 'Wolves', label: 'Wolverhampton' },
 ];*/
 
-/*const options = ['All teams', 'Arsenal', 'Aston Villa','Brighton', 'Burnley', 'Chelsea', 'Crystal Palace', 'Everton',
- 'Fulham', 'Leeds', 'Leicester', 'Liverpool', 'Manchester City', 'Manchester United', 'Newcastle', 'Sheffield', 'Southampton', 
- 'West Bromwich', 'West Ham', 'Wolverhampton'];*/
 
 //Funksjonen changeTeam sendes ned som en prop fra SearchComponent
-export const DropDownComponent: React.FC<DropDownProps> = (props: DropDownProps) => {
+export const DropDownComponent: React.FC<filterProps> = (props: filterProps) => {
     /*const handleChange = (selectedOption: any) => {
         props.changeTeam(selectedOption.label);
     };*/
@@ -46,16 +43,17 @@ export const DropDownComponent: React.FC<DropDownProps> = (props: DropDownProps)
     }*/
     //const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider } = useContext(GlobalContext);
 
+
+
     return (
         <View style={styles.container}> 
           <Picker
             style={styles.picker}
-            selectedValue={'test'}
-            mode='dialog'
+            selectedValue={props.team}
+            mode='dropdown'
+            
+            onValueChange={(itemValue) => props.setTeam(itemValue)}
             itemStyle={styles.itemStyle}>
-            {/*{options.map((item, index) => {
-                return (< Picker.Item label={item} value={item} key={index} />);
-                })}*/}
             <Picker.Item label='All teams' value=""/>
             <Picker.Item label='Arsenal' value="Arsenal"/>
             <Picker.Item value= 'Aston Villa' label='Aston Villa'/>
@@ -76,6 +74,7 @@ export const DropDownComponent: React.FC<DropDownProps> = (props: DropDownProps)
             <Picker.Item value='Tottenham' label= 'Totteham'  />
             <Picker.Item value= 'West Brom' label='West Bromwich'/>
             <Picker.Item value='West Ham' label='West Ham' />
+            <Picker.Item value= 'Wolves' label='Wolverhampton' />
           </Picker>
       </View>
     )

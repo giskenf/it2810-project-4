@@ -13,8 +13,6 @@ import { GetPlayers } from '../store/actions/playersAction';
 import { Text, View } from '../components/Themed';
 import {Player} from "../components/PlayerInfo";
 import {FilterButton} from "./FilterButton";
-import { GlobalContext } from "../components/GlobalProvider";
-
 
 export default function TabOneScreen() {
     const dispatch = useDispatch();
@@ -22,25 +20,27 @@ export default function TabOneScreen() {
     const [playerName, setPlayerName] = useState("");
     const playerState = useSelector((state: RootStore) => state.players);
     const [value, onChangeText] = React.useState('Useless Placeholder');
-    const [team, setTeam] = useState("Arsenal");
-    const [sort, setSort] = useState("name"); 
-    const [order, setOrder] = useState(1); 
+    const [team, setTeam] = useState("");
+    const [sort, setSort] = useState(""); 
+    const [order, setOrder] = useState(-1); 
     const [page, setPage] = useState(1);
-
-    const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider } = useContext(GlobalContext);
 
     useEffect(()=>{
         dispatch(GetPlayers(playerName, team, sort, order, page))
-    },[playerName])
+    },[playerName, sort, team, order ])
+
+    console.log(order);
 
     return (
         <View style={styles.container}>
+           <FilterButton setSort={setSort} setTeam={setTeam} team={team} setOrder={setOrder} />
             <TextInput
               style={styles.search}
               placeholder="Search for your favorite player!"
               onChangeText={text => setPlayerName(text)}
               value={playerName}
             />
+           
             <FlatList
                 data={playerState.player}
                 keyExtractor={(item)=> item._id}
@@ -64,17 +64,12 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
-    paddingHorizontal: 25,
+    paddingTop: 20,
+    paddingHorizontal: 10,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
   item:{
     marginTop: 24,
@@ -92,7 +87,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#F194FF',
     borderColor: 'white', 
     borderWidth: 1,
-      
   }, 
   paginationStyle:{
     alignItems:"center" , 
@@ -102,7 +96,6 @@ const styles = StyleSheet.create({
     margin:0, 
     bottom:0, 
     right:0, 
-    bottom:0, 
     padding:0, 
     flex:1, 
   }

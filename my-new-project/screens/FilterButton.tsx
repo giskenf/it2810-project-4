@@ -1,19 +1,36 @@
 import  React, {useState, useContext} from 'react';
 import { StyleSheet, Modal, TouchableHighlight } from 'react-native';
+import { withSafeAreaInsets } from 'react-native-safe-area-context';
 import {DropDownComponent} from '../components/DropDownComponent';
 import {FilterComponent} from '../components/FilterComponent';
+import {CheckBoxComponent} from '../components/CheckBox';
+import {GoalsSort} from '../components/GoalsSort';
 import { Text, View } from '../components/Themed';
 //import { GlobalContext } from "../components/GlobalProvider";
 
 
-export const FilterButton: React.FC = () => {
+interface filterProps{
+  setSort:(a: string)=> void;
+  setTeam:(a: string)=> void;
+  team: string; 
+  setOrder:(a: number)=> void;
+}
+
+export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [team, setTeam] = useState("");
 
   //const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider} = useContext(GlobalContext);
 
   return (
     <View style={styles.container}>
+      <TouchableHighlight
+        style={styles.openButton}
+        onPress={() => {
+          setModalVisible(true);
+        }}
+      >
+      <Text style={styles.textStyle}>Filter</Text>
+      </TouchableHighlight>
       <Modal 
         animationType="slide"
         transparent={true}
@@ -21,11 +38,12 @@ export const FilterButton: React.FC = () => {
           <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Choose a filter!</Text>
-            <DropDownComponent changeTeam={setTeam}/>
+            <DropDownComponent setTeam={props.setTeam} team={props.team}/>
             <Text style={styles.switchText}>Sort by name</Text>
-            <FilterComponent/>
+            <FilterComponent setSort={props.setSort}/>
             <Text style={styles.switchText}>Sort by goals scored</Text>
-            <FilterComponent/>
+            <GoalsSort setSort={props.setSort}/>
+            <CheckBoxComponent setOrder={props.setOrder}/>
             <TouchableHighlight
               style={{
                  ...styles.openButton,
@@ -41,14 +59,6 @@ export const FilterButton: React.FC = () => {
           </View>
         </View>
       </Modal>
-       <TouchableHighlight
-        style={styles.openButton}
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      >
-        <Text style={styles.textStyle}>Filter </Text>
-      </TouchableHighlight>
     </View>
   );
 }
@@ -58,11 +68,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#3D195B',
+    backgroundColor: 'white',
+    paddingTop: 0,
+    paddingBottom: 15,
+    paddingLeft: 250,
+    margin: 5,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'white',
   },
   separator: {
     marginVertical: 10,
@@ -95,9 +110,9 @@ const styles = StyleSheet.create({
   openButton: {
     backgroundColor: '#a973d5',
     borderRadius: 25,
-    padding: 5,
+    padding: 20,
     marginLeft: 20,
-    elevation: 2
+    elevation: 2,
   },
   textStyle: {
     color: "white",

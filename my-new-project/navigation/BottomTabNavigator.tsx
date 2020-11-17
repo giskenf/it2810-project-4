@@ -53,8 +53,8 @@ function TabOneNavigator() {
         name="TabOneScreen"
         component={TabOneScreen}
         options={{ 
-          headerLeft: () => (
-            <FilterButton/>),
+         /*} headerLeft: () => (
+         <FilterButton/>),*/
           headerTitle: 'Premier League Search!', 
           headerTitleAlign: 'center', 
           headerStyle:  {

@@ -10,14 +10,14 @@ interface filterProps{
 }
 
 
-export const FilterComponent: React.FC<filterProps> = (props: filterProps) => {
+export const GoalsSort: React.FC<filterProps> = (props: filterProps) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   function checkEnable() {
     toggleSwitch()
     if(!isEnabled){
-      props.setSort('name');
+      props.setSort('goalsScored');
     }
     else{
       props.setSort('');
