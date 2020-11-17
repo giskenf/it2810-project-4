@@ -42,6 +42,7 @@ expo init my-new-project
 Funksjonelle komponenter er implementert ved hjelp av JSX og TypeScript. Projektet består av ulike komponenter, hvor alt blir satt sammen i App.ts. Videre stack navigation brukt for å vise screen. Grunnen til at stack navigation er brukt er at vi i starten brukte flere ulike screens. Etterhvert ble all funksjonalitet implementert inn i "TabOneScreen", men vi valgte å beholde stack navigation for å unngå å endre for mye i koden. 
 
 En stor del av koden er lik som i prosjekt 3. Det var likevel en del endringer som var nødvendig, for å tilpasse prosjektet til React Native. For det første var vi nødt til å endre på det meste av styling. I dette prosjektet har vi tatt i bruk Stylesheets direkte inn i .tsx-filene for å style komponentene. I tillegg bruker React Native egne komponenter for å rendre. Der vi i forrige prosjekt tok i bruk HTML-komponenter som "div" og "h1", har vi i dette projektet brukt React Native komponennter som "Text" og "View". 
+
 ### State management
 
 **Redux** ble benyttet til state managament i applikasjonen. Hvor prinsippet er å ha en store for lagring av tilstander.
@@ -49,6 +50,18 @@ Dette gjør at en kan flytte tilstander ut av komponenter, til en egen «enhet»
 Actions for å beskrive hendelser som fører til en endring, og reducers som beskriver hvordan tilstandene endres av actions.
 
 I tillegg ble props og states tatt i bruk for å sende states fra de ulike sort- og filterkomponentene. Disse statesene ble sendt til disptach-metoden i "TabOneScreen". Denne metoden henter data fra databasen, basert på variablene den blir gitt. 
+
+### Tredjepartskomponenter
+
+I tillegg til bruk av React Native sine egne komponenter, er det tatt i bruk tredjepartskomponenter for å implementere hhv. Picker-list og Checkbox. 
+
+## Kilder
+
+- https://www.npmjs.com/package/@react-native-community/picker
+- https://www.npmjs.com/package/react-native-check-box
+- https://fantasy.premierleague.com/
+- https://www.transfermarkt.co.uk/
+
 
 
 
