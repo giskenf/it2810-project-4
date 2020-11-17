@@ -7,6 +7,10 @@ import { GetPlayers } from '../store/actions/playersAction';
 
 interface filterProps{
   setSort:(a: string)=> void;
+  setSortByGoals:(a: boolean) => void;
+  setSortByName:(a: boolean) => void;
+  sortByGoals: boolean;
+  sortByName: boolean;
 }
 
 
@@ -14,13 +18,26 @@ export const FilterComponent: React.FC<filterProps> = (props: filterProps) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
+  useEffect(()=>{
+    if (props.sortByGoals && isEnabled){
+      toggleSwitch()
+    }
+    else if(props.sortByName && !isEnabled){
+      toggleSwitch()
+    }
+  })
+
   function checkEnable() {
     toggleSwitch()
     if(!isEnabled){
       props.setSort('name');
+      props.setSortByName(true);
+      props.setSortByGoals(false); 
     }
     else{
       props.setSort('');
+      props.setSortByName(false);
+      props.setSortByGoals(false);
     }
   }
   return (

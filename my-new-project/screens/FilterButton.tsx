@@ -18,6 +18,8 @@ interface filterProps{
 
 export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [sortByName, setSortByName] = useState(false);
+  const [sortByGoals, setSortByGoals] = useState (false)
 
   //const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider} = useContext(GlobalContext);
 
@@ -40,9 +42,9 @@ export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
             <Text style={styles.modalText}>Choose a filter!</Text>
             <DropDownComponent setTeam={props.setTeam} team={props.team}/>
             <Text style={styles.switchText}>Sort by name</Text>
-            <FilterComponent setSort={props.setSort}/>
+            <FilterComponent setSort={props.setSort} setSortByGoals={setSortByGoals} setSortByName={setSortByName} sortByGoals={sortByGoals} sortByName={sortByName}/>
             <Text style={styles.switchText}>Sort by goals scored</Text>
-            <GoalsSort setSort={props.setSort}/>
+            <GoalsSort setSort={props.setSort} setSortByGoals={setSortByGoals} setSortByName={setSortByName} sortByName={sortByName} sortByGoals={sortByGoals}/>
             <CheckBoxComponent setOrder={props.setOrder}/>
             <TouchableHighlight
               style={{
