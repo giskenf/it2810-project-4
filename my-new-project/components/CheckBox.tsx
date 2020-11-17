@@ -25,11 +25,10 @@ interface filterProps{
       }
     }
 
-    console.log(props.boxIsChecked);
     return (
       <View style={styles.container}>
         <CheckBox
-            style={{flex: 1, padding: 10}}
+            style={styles.checkbox}
             onClick={checkEnable} 
             isChecked={props.boxIsChecked}
             leftText={"CheckBox"}
@@ -45,6 +44,10 @@ interface filterProps{
       justifyContent: "center",
       margin: 0,
       padding: 0,
-    }
+    }, 
+    checkbox: {
+      flex: 1,
+      padding: 10,
+    },
   });
   

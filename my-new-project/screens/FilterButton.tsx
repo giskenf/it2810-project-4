@@ -39,12 +39,13 @@ export const FilterButton: React.FC<filterProps>= (props: filterProps) => {
           <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Choose a filter!</Text>
+            <Text style={styles.switchText}>Choose a team:</Text>
             <DropDownComponent setTeam={props.setTeam} team={props.team}/>
             <Text style={styles.switchText}>Sort by name:</Text>
             <FilterComponent setSort={props.setSort} setSortByGoals={setSortByGoals} setSortByName={setSortByName} sortByGoals={sortByGoals} sortByName={sortByName}/>
             <Text style={styles.switchText}>Sort by goals scored:</Text>
             <GoalsSort setSort={props.setSort} setSortByGoals={setSortByGoals} setSortByName={setSortByName} sortByName={sortByName} sortByGoals={sortByGoals}/>
-            <Text style={styles.switchText}> Set ascending order:</Text>
+            <Text style={styles.switchText}> Sort in descendig order:</Text>
             <CheckBoxComponent setOrder={props.setOrder} setBoxIsChecked={setBoxIsChecked} boxIsChecked={boxIsChecked}/>
             <TouchableHighlight
               style={{
@@ -73,19 +74,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     paddingTop: 0,
-    paddingBottom: 15,
+    paddingBottom: 10,
     paddingLeft: 250,
-    margin: 5,
+    margin: 0,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
-  },
-  separator: {
-    marginVertical: 10,
-    height: 1,
-    width: '80%',
   },
   centeredView: {
     flex: 1,
@@ -100,7 +96,7 @@ const styles = StyleSheet.create({
     padding: 20,
     width: 350,
     height: 580,
-    alignItems: "flex-start",
+    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -113,9 +109,11 @@ const styles = StyleSheet.create({
   openButton: {
     backgroundColor: '#a973d5',
     borderRadius: 25,
-    padding: 15,
+    padding: 12,
     marginLeft: 20,
-    elevation: 2,
+    marginBottom: 5,
+    marginTop: 5,
+    width: 80,
   },
   textStyle: {
     color: "white",

@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
+  
 } from 'react-native';
 import Pagination,{Icon,Dot} from 'react-native-pagination';
 import { useDispatch, useSelector } from "react-redux";
@@ -17,10 +18,8 @@ import {FilterButton} from "./FilterButton";
 
 export default function TabOneScreen() {
     const dispatch = useDispatch();
-    const [viewable, setViewable] = useState("");
     const [playerName, setPlayerName] = useState("");
     const playerState = useSelector((state: RootStore) => state.players);
-    const [value, onChangeText] = React.useState('Useless Placeholder');
     const [team, setTeam] = useState("");
     const [sort, setSort] = useState(""); 
     const [order, setOrder] = useState(1); 
@@ -43,8 +42,8 @@ export default function TabOneScreen() {
               onChangeText={text => setPlayerName(text)}
               value={playerName}
             />
-           
             <FlatList
+                style={styles.list}
                 data={playerState.player}
                 keyExtractor={(item)=> item._id}
                 renderItem={({item}) => (
@@ -89,26 +88,16 @@ const styles = StyleSheet.create({
   // },
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 0,
+    paddingBottom: 0,
     paddingHorizontal: 10,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  item:{
-    marginTop: 24,
-    padding: 30,
-    backgroundColor: '#87CEFA',
-    fontSize: 24,
-  },
-  overlay:{
-    height: '60%',
-    width: '50%,',
-    backgroundColor: '#87CEFA'
-  }, 
   search:{
-    height: 40,
+    height: 30,
     borderBottomColor: '#F194FF',
     borderColor: 'white', 
     borderWidth: 1,
@@ -123,5 +112,11 @@ const styles = StyleSheet.create({
     right:0, 
     padding:0, 
     flex:1, 
-  }
+  },
+  filterButton:{
+      paddingBottom: 20,
+  },
+  list: {
+    height: 400,
+  },
 });
