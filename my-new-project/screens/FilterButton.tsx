@@ -1,13 +1,10 @@
 import  React, {useState, useEffect} from 'react';
 import { StyleSheet, Modal, TouchableHighlight } from 'react-native';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
 import {DropDownComponent} from '../components/DropDownComponent';
 import {FilterComponent} from '../components/FilterComponent';
 import {CheckBoxComponent} from '../components/CheckBox';
 import {GoalsSort} from '../components/GoalsSort';
 import { Text, View } from '../components/Themed';
-//import { GlobalContext } from "../components/GlobalProvider";
-
 
 interface filterProps{
   setSort:(a: string)=> void;
@@ -110,7 +107,7 @@ const styles = StyleSheet.create({
   openButton: {
     backgroundColor: '#a973d5',
     borderRadius: 25,
-    padding: 20,
+    padding: 15,
     marginLeft: 20,
     elevation: 2,
   },

@@ -1,6 +1,5 @@
 import  React, {useState, useContext} from 'react';
 import { StyleSheet, Modal, TouchableHighlight, View} from 'react-native';
-//import CheckBox from '@react-native-community/checkbox';
 import CheckBox from 'react-native-check-box';
 
 interface filterProps{

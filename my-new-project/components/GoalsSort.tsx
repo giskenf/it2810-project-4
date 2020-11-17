@@ -1,9 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { View, Switch, StyleSheet } from "react-native";
-import { GlobalContext } from "../components/GlobalProvider";
-import { useDispatch, useSelector } from "react-redux";
-import {RootStore} from '../store/store';
-import { GetPlayers } from '../store/actions/playersAction';
 
 interface filterProps{
   setSort:(a: string)=> void;
