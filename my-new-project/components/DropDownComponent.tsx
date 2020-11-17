@@ -1,49 +1,14 @@
 import React, {useEffect, useState}  from 'react';
 import { StyleSheet, View } from 'react-native';
 import {Picker} from '@react-native-community/picker';
-//import { GlobalContext } from "../components/GlobalProvider";
 
 interface filterProps{
     setTeam:(a:string)=> void;
     team: string;
 }
 
-/*const options = [
-    {value:"",label:'All teams'},
-    { value: 'Arsenal', label: 'Arsenal' },
-    { value: 'Aston Villa', label: 'Aston Villa' },
-    { value: 'Brighton', label: 'Brighton' },
-    { value: 'Burnley', label: 'Burnley' },
-    { value: 'Chelsea', label: 'Chelsea' },
-    { value: 'Crystal Palace', label: 'Crystal Palace' },
-    { value: 'Everton', label: 'Everton' },
-    { value: 'Fulham', label: 'Fulham' },
-    { value: 'Leeds', label: 'Leeds United' },
-    { value: 'Leicester', label: 'Leicester' },
-    { value: 'Liverpool', label: 'Liverpool' },
-    { value: 'Man City', label: 'Manchester City' },
-    { value: 'Man Utd', label: 'Manchester United' },
-    { value: 'Newcastle', label: 'Newcastle' },
-    { value: 'Sheffield', label: 'Sheffield United' },
-    { value: 'Southampton', label: 'Southampton' },
-    { value: 'Tottenham', label: 'Totteham' },
-    { value: 'West Brom', label: 'West Bromwich'},
-    { value: 'West Ham', label: 'West Ham' },
-    { value: 'Wolves', label: 'Wolverhampton' },
-];*/
-
-
-//Funksjonen changeTeam sendes ned som en prop fra SearchComponent
+//Funksjonen setTeam sendes ned som en prop fra TabOneScreen
 export const DropDownComponent: React.FC<filterProps> = (props: filterProps) => {
-    /*const handleChange = (selectedOption: any) => {
-        props.changeTeam(selectedOption.label);
-    };*/
-    /*function handleChange(selected: any) {
-        teamProvider.setTeam(selected);
-    }*/
-    //const { pageProvider, numberOfPageProvider,isDisabledProvider, teamProvider } = useContext(GlobalContext);
-
-
 
     return (
         <View style={styles.container}> 
@@ -51,7 +16,6 @@ export const DropDownComponent: React.FC<filterProps> = (props: filterProps) => 
             style={styles.picker}
             selectedValue={props.team}
             mode='dropdown'
-            
             onValueChange={(itemValue) => props.setTeam(itemValue)}
             itemStyle={styles.itemStyle}>
             <Picker.Item label='All teams' value=""/>

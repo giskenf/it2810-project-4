@@ -22,14 +22,14 @@ export default function TabOneScreen() {
     const [value, onChangeText] = React.useState('Useless Placeholder');
     const [team, setTeam] = useState("");
     const [sort, setSort] = useState(""); 
-    const [order, setOrder] = useState(-1); 
+    const [order, setOrder] = useState(1); 
     const [page, setPage] = useState(1);
 
     useEffect(()=>{
         dispatch(GetPlayers(playerName, team, sort, order, page))
     },[playerName, sort, team, order ])
 
-    console.log(order);
+    //console.log(order);
 
     return (
         <View style={styles.container}>
